@@ -40,10 +40,12 @@ WORKDIR /project
 COPY src/ /project/src
 
 ENV N_WORKERS 1
+ENV TIMEOUT 300
 
 CMD gunicorn \
   --access-logfile - \
   --bind=0.0.0.0:8000 \
   --workers=${N_WORKERS} \
   -k uvicorn.workers.UvicornWorker \
+  --timeout ${TIMEOUT} \
   src.app.server:app                              
