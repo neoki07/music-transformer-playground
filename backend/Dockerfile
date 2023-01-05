@@ -39,7 +39,7 @@ COPY --from=downloader /project/checkpoints /project/checkpoints
 WORKDIR /project
 COPY src/ /project/src
 
-ENV N_WORKERS 4
+ENV N_WORKERS 1
 
 CMD gunicorn \
   --access-logfile - \
