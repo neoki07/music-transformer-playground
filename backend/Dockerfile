@@ -39,6 +39,8 @@ COPY --from=downloader /project/checkpoints /project/checkpoints
 WORKDIR /project
 COPY src/ /project/src
 
+EXPOSE 8000
+
 ENV N_WORKERS 1
 ENV TIMEOUT 300
 
