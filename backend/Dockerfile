@@ -48,4 +48,5 @@ CMD gunicorn \
   --workers=${N_WORKERS} \
   -k uvicorn.workers.UvicornWorker \
   --timeout ${TIMEOUT} \
-  src.app.server:app                              
+  --log-level=debug \
+  src.app.server:app
