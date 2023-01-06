@@ -39,14 +39,14 @@ COPY --from=downloader /project/checkpoints /project/checkpoints
 WORKDIR /project
 COPY src/ /project/src
 
-EXPOSE 8000
+EXPOSE 80
 
 ENV N_WORKERS 1
 ENV TIMEOUT 300
 
 CMD gunicorn \
   --access-logfile - \
-  --bind=0.0.0.0:8000 \
+  --bind=0.0.0.0:80 \
   --workers=${N_WORKERS} \
   -k uvicorn.workers.UvicornWorker \
   --timeout ${TIMEOUT} \
