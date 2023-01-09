@@ -39,16 +39,7 @@ COPY --from=downloader /project/checkpoints /project/checkpoints
 WORKDIR /project
 COPY src/ /project/src
 
-EXPOSE 80
+ENV PORT 8080
+EXPOSE $PORT
 
-ENV N_WORKERS 1
-ENV TIMEOUT 300
-
-CMD gunicorn \
-  --access-logfile - \
-  --bind=0.0.0.0:80 \
-  --workers=${N_WORKERS} \
-  -k uvicorn.workers.UvicornWorker \
-  --timeout ${TIMEOUT} \
-  --log-level=debug \
-  src.app.server:app
+CMD uvicorn src.app.server:app --reload --host 0.0.0.0 --port $PORT
