@@ -1,4 +1,5 @@
 import fastapi
+from google.protobuf.json_format import MessageToDict
 
 from app.generate_unconditional import generate_from_scratch
 
@@ -13,4 +14,4 @@ def root():
 @app.get("/generate/unconditional/from-scratch")
 def generate_from_scratch_with_unconditional_model():
     generated_ns = generate_from_scratch()
-    return {"generated_ns": generated_ns}
+    return MessageToDict(generated_ns)
