@@ -1,6 +1,10 @@
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
+import { Player, Visualizer } from "@magenta/music";
 import { LoadingSpinner } from "./components/LoadingSpinner/LoadingSpinner";
+import { useEffect, useRef, useState } from "react";
+
+const player = new Player();
 
 async function getGeneratedNoteSeq() {
   if (!import.meta.env.VITE_API_URL) {
@@ -21,10 +25,25 @@ function App() {
     enabled: false,
   });
 
-  console.log("data:", data);
+  const canvasRef = useRef<HTMLCanvasElement>();
+  const [, setVisualizer] = useState<Visualizer>();
 
-  const handleClick = () => {
+  useEffect(() => {
+    if (data !== undefined) {
+      setVisualizer(new Visualizer(data as any, canvasRef.current!));
+    }
+  }, [data]);
+
+  const generate = () => {
     refetch();
+  };
+
+  const play = () => {
+    player.start(data as any);
+  };
+
+  const stop = () => {
+    player.stop();
   };
 
   return (
@@ -35,7 +54,7 @@ function App() {
       <div className="mt-6 sm:mt-10 flex justify-center space-x-6 text-sm">
         <button
           className="bg-slate-900 hover:bg-slate-700 disabled:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 text-white font-semibold h-12 px-6 rounded-lg w-full flex items-center justify-center sm:w-auto"
-          onClick={handleClick}
+          onClick={generate}
           disabled={isFetching}
         >
           {isFetching ? (
@@ -48,6 +67,27 @@ function App() {
           )}
         </button>
       </div>
+      {!isFetching && data !== undefined && (
+        <>
+          <div className="mt-6 sm:mt-10 flex justify-center space-x-6 text-sm">
+            <button
+              className="bg-green-600 hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-green-300 focus:ring-offset-2 focus:ring-offset-slate-50 text-white font-semibold h-12 px-6 rounded-lg w-full flex items-center justify-center sm:w-auto"
+              onClick={play}
+            >
+              Play
+            </button>
+            <button
+              className="bg-red-600 hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-red-300 focus:ring-offset-2 focus:ring-offset-slate-50 text-white font-semibold h-12 px-6 rounded-lg w-full flex items-center justify-center sm:w-auto"
+              onClick={stop}
+            >
+              Stop
+            </button>
+          </div>
+          <div className="mt-6 sm:mt-10 border border-gray-300 rounded-xl overflow-scroll">
+            <canvas ref={canvasRef} />
+          </div>
+        </>
+      )}
     </div>
   );
 }
