@@ -26,7 +26,7 @@ function App() {
     enabled: false,
   });
 
-  const canvasRef = useRef<HTMLCanvasElement>();
+  const canvasRef = useRef<HTMLCanvasElement>(null);
   const [, setVisualizer] = useState<Visualizer>();
 
   useEffect(() => {
