@@ -1,14 +1,15 @@
-import axios from "axios";
-import { useQuery } from "@tanstack/react-query";
-import { Player, Visualizer } from "@magenta/music";
-import { LoadingSpinner } from "./components/LoadingSpinner/LoadingSpinner";
-import { useEffect, useRef, useState } from "react";
+import { Player, Visualizer } from '@magenta/music';
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
+import { useEffect, useRef, useState } from 'react';
+
+import { LoadingSpinner } from './components/LoadingSpinner/LoadingSpinner';
 
 const player = new Player();
 
 async function getGeneratedNoteSeq() {
   if (!import.meta.env.VITE_API_URL) {
-    console.error("API_URL is undefined");
+    console.error('API_URL is undefined');
     return;
   }
 
@@ -19,7 +20,7 @@ async function getGeneratedNoteSeq() {
 
 function App() {
   const { data, isFetching, refetch } = useQuery({
-    queryKey: ["generatedNoteSeq"],
+    queryKey: ['generatedNoteSeq'],
     queryFn: getGeneratedNoteSeq,
     refetchOnWindowFocus: false,
     enabled: false,
@@ -63,7 +64,7 @@ function App() {
               Generating...
             </>
           ) : (
-            "Unconditional Generate"
+            'Unconditional Generate'
           )}
         </button>
       </div>
