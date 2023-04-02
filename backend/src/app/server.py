@@ -9,7 +9,7 @@ from google.protobuf.json_format import MessageToDict
 
 app = fastapi.FastAPI()
 
-origins = ['http://localhost:3000', 'http://localhost:5173', 'https://music-transformer-playground-frontend.vercel.app']
+origins = ['http://localhost:5173', 'https://music-transformer-playground.vercel.app']
 
 app.add_middleware(
     CORSMiddleware,
