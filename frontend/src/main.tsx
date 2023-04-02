@@ -1,17 +1,29 @@
-import './index.css';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter as Router } from "react-router-dom";
+import { App } from "./App";
+import { MantineProvider } from "@mantine/core";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: false,
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
-import App from './App';
-
-const queryClient = new QueryClient();
-
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <App />
-    </QueryClientProvider>
+    <MantineProvider withNormalizeCSS withGlobalStyles>
+      <QueryClientProvider client={queryClient}>
+        <Router>
+          <App />
+          <ReactQueryDevtools initialIsOpen={false} />
+        </Router>
+      </QueryClientProvider>
+    </MantineProvider>
   </React.StrictMode>
 );

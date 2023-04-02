@@ -1,8 +1,11 @@
-import fastapi
-from fastapi.middleware.cors import CORSMiddleware
-from google.protobuf.json_format import MessageToDict
+import io
 
+import fastapi
+import note_seq
 from app.generate_unconditional import generate_from_scratch
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import Response
+from google.protobuf.json_format import MessageToDict
 
 app = fastapi.FastAPI()
 
@@ -23,5 +26,11 @@ def root():
 
 @app.get("/generate/unconditional/from-scratch")
 def generate_from_scratch_with_unconditional_model():
-    generated_ns = generate_from_scratch()
-    return MessageToDict(generated_ns)
+    ns = generate_from_scratch()
+    pm = note_seq.note_sequence_to_pretty_midi(ns)
+    midi_bytes = io.BytesIO()
+    pm.write(midi_bytes)
+    return Response(
+        content=midi_bytes.getvalue(),
+        media_type="audio/midi"
+    )
