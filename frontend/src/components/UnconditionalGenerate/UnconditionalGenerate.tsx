@@ -19,7 +19,7 @@ import {
 async function getGeneratedSong(apiUrl: string): Promise<Song> {
   const response = await fetch(`${apiUrl}/generate/unconditional/from-scratch`);
   const data = await response.arrayBuffer();
-  return createSongFromMidiArrayBuffer(data);
+  return createSongFromMidiArrayBuffer(data, 480);
 }
 
 interface GenerateButtonProps {
@@ -58,7 +58,7 @@ interface InnerPlayerProps {
 }
 
 const InnerPlayer: FC<InnerPlayerProps> = ({ song, isGenerating }) => {
-  const { start, stop, setSong } = useRecital();
+  const { play, stop, setSong } = useRecital();
 
   useLayoutEffect(() => {
     if (song !== undefined) {
@@ -78,7 +78,7 @@ const InnerPlayer: FC<InnerPlayerProps> = ({ song, isGenerating }) => {
             height: rem(40),
           },
         })}
-        onClick={start}
+        onClick={play}
       >
         PLAY
       </Button>
@@ -139,7 +139,9 @@ export const UnconditionalGenerate: FC<UnconditionalGenerateProps> = ({
   });
 
   const generate = (): void => {
-    refetch();
+    refetch().catch((e) => {
+      throw new Error(e.message);
+    });
     !isClickedGenerateButton && setIsClickedGenerateButton(true);
   };
 
