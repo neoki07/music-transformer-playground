@@ -4,8 +4,8 @@ specifiers:
   '@emotion/react': ^11.10.6
   '@mantine/core': ^6.0.5
   '@mantine/hooks': ^6.0.5
-  '@resonance-box/react-recital': ^0.0.9
-  '@resonance-box/recital-core': ^0.0.9
+  '@resonance-box/react-recital': ^0.0.10
+  '@resonance-box/recital-core': ^0.0.10
   '@tabler/icons-react': ^2.13.1
   '@tanstack/react-query': ^4.28.0
   '@tanstack/react-query-devtools': ^4.28.0
@@ -36,8 +36,8 @@ dependencies:
   '@emotion/react': 11.10.6_o2wclmlv6kymw75psj4clbbe6a
   '@mantine/core': 6.0.5_4wdcoykwfvqpokclgebq7lzcca
   '@mantine/hooks': 6.0.5_react@18.2.0
-  '@resonance-box/react-recital': 0.0.9
-  '@resonance-box/recital-core': 0.0.9
+  '@resonance-box/react-recital': 0.0.10
+  '@resonance-box/recital-core': 0.0.10
   '@tabler/icons-react': 2.13.1_react@18.2.0
   '@tanstack/react-query': 4.28.0_biqbaboplfbrettd7655fr4n2y
   '@tanstack/react-query-devtools': 4.28.0_q4teel2yjbizrm4naiaqcdpjum
@@ -694,11 +694,11 @@ packages:
     engines: {node: '>=14'}
     dev: false
 
-  /@resonance-box/react-recital/0.0.9:
-    resolution: {integrity: sha512-ErGfOs5IMGCP4Mwz7oGJ0ON6bd5q5cRBL7e242ZjFswNTHeeGoayhmGg+29cm3EdmigBwjGhSKc9oMhpA3CXTA==}
+  /@resonance-box/react-recital/0.0.10:
+    resolution: {integrity: sha512-03GOKsx56sbLXIQDSdQ/HAMsbK9AG/VbUJAFaWT0eW5JeBLBGtX5sxn9i3heASDEWpU9j9Uh3Fb/oJQxKtHuNw==}
     engines: {node: 18.x, pnpm: '>=7.26.0'}
     dependencies:
-      '@resonance-box/recital-core': 0.0.9
+      '@resonance-box/recital-core': 0.0.10
       immer: 9.0.21
       lodash: 4.17.21
       react: 18.2.0
@@ -707,8 +707,8 @@ packages:
       zustand: 4.3.7_immer@9.0.21+react@18.2.0
     dev: false
 
-  /@resonance-box/recital-core/0.0.9:
-    resolution: {integrity: sha512-GE2fFNqKNQvJ7W5oH5aWRDC+l2NvywnH+IUOuHCqjlBpbQ7xO+wyqQ5OwdQ0SwEcjAz0oCseIhDRnXKQsHBChw==}
+  /@resonance-box/recital-core/0.0.10:
+    resolution: {integrity: sha512-VR4ze6gyYzM/ZQ2wnj2+lIV7nzi9vxCewyOIBDS9D46o8AtmpKddZbRTsIbfjDlqmyj6iWAcmXa/IhDAL/Httw==}
     engines: {node: 18.x, pnpm: '>=7.26.0'}
     dependencies:
       '@paralleldrive/cuid2': 2.2.0
