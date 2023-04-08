@@ -1,10 +1,5 @@
 import { Button, Center, Group, Loader, rem } from "@mantine/core";
-import {
-  PianoRoll,
-  RecitalProvider,
-  useRecital,
-  useSoundFont2Synth,
-} from "@resonance-box/react-recital";
+import { PianoRoll, useRecital } from "@resonance-box/react-recital";
 import {
   IconPlayerPlayFilled,
   IconPlayerStopFilled,
@@ -52,12 +47,12 @@ const GenerateButton: FC<GenerateButtonProps> = ({
   );
 };
 
-interface InnerPlayerProps {
+interface PlayerProps {
   song: Song | undefined;
   isGenerating: boolean;
 }
 
-const InnerPlayer: FC<InnerPlayerProps> = ({ song, isGenerating }) => {
+const Player: FC<PlayerProps> = ({ song, isGenerating }) => {
   const { play, stop, setSong } = useRecital();
 
   useLayoutEffect(() => {
@@ -101,24 +96,6 @@ const InnerPlayer: FC<InnerPlayerProps> = ({ song, isGenerating }) => {
   );
 };
 
-interface PlayerProps {
-  song: Song | undefined;
-  isGenerating: boolean;
-}
-
-const Player: FC<PlayerProps> = ({ song, isGenerating }) => {
-  const { synth } = useSoundFont2Synth(
-    new URL("../../assets/GeneralUser GS v1.471.sf2", import.meta.url)
-  );
-
-  return (
-    <RecitalProvider initialConfig={{ synth, song }}>
-      <InnerPlayer isGenerating={isGenerating} song={song} />
-      <PianoRoll height={600} />
-    </RecitalProvider>
-  );
-};
-
 interface UnconditionalGenerateProps {
   apiUrl: string;
 }
@@ -149,7 +126,10 @@ export const UnconditionalGenerate: FC<UnconditionalGenerateProps> = ({
     <>
       <GenerateButton isGenerating={isFetching} generate={generate} />
       {isClickedGenerateButton && (
-        <Player song={song} isGenerating={isFetching} />
+        <>
+          <Player isGenerating={isFetching} song={song} />
+          <PianoRoll height={600} />
+        </>
       )}
     </>
   );
