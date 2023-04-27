@@ -5,11 +5,12 @@ import {
   IconPlayerStopFilled,
 } from "@tabler/icons-react";
 import { useQuery } from "@tanstack/react-query";
-import { type FC, useLayoutEffect, useState } from "react";
+import { type FC, useLayoutEffect, useMemo, useState } from "react";
 import {
   createSongFromMidiArrayBuffer,
   type Song,
 } from "@resonance-box/recital-core";
+import { getMinMaxNoteNumber } from "../../utils/getMinMaxNoteNumber";
 
 async function getGeneratedSong(apiUrl: string): Promise<Song> {
   const response = await fetch(`${apiUrl}/generate/unconditional/from-scratch`);
@@ -115,6 +116,18 @@ export const UnconditionalGenerate: FC<UnconditionalGenerateProps> = ({
     enabled: false,
   });
 
+  const { minNoteNumber, maxNoteNumber } = useMemo(() => {
+    if (song === undefined) {
+      return { minNoteNumber: 0, maxNoteNumber: 127 };
+    }
+
+    const { minNoteNumber, maxNoteNumber } = getMinMaxNoteNumber(song);
+    return {
+      minNoteNumber: Math.max(0, minNoteNumber - 3),
+      maxNoteNumber: Math.min(127, maxNoteNumber + 3),
+    };
+  }, [song]);
+
   const generate = (): void => {
     refetch().catch((e) => {
       throw new Error(e.message);
@@ -128,7 +141,11 @@ export const UnconditionalGenerate: FC<UnconditionalGenerateProps> = ({
       {isClickedGenerateButton && (
         <>
           <Player isGenerating={isFetching} song={song} />
-          <PianoRoll height={600} />
+          <PianoRoll
+            height={600}
+            minNoteNumber={minNoteNumber}
+            maxNoteNumber={maxNoteNumber}
+          />
         </>
       )}
     </>
