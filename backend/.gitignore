@@ -129,7 +129,7 @@ dmypy.json
 .pyre/
 
 .vscode
-.pdm.toml
+.pdm-python
 
 checkpoints/
 content/
