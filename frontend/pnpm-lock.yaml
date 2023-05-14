@@ -4,8 +4,8 @@ specifiers:
   '@emotion/react': ^11.10.6
   '@mantine/core': ^6.0.5
   '@mantine/hooks': ^6.0.5
-  '@resonance-box/react-recital': ^0.0.14
-  '@resonance-box/recital-core': ^0.0.14
+  '@resonance-box/react-recital': ^0.0.15
+  '@resonance-box/recital-core': ^0.0.15
   '@tabler/icons-react': ^2.13.1
   '@tanstack/react-query': ^4.28.0
   '@tanstack/react-query-devtools': ^4.28.0
@@ -36,8 +36,8 @@ dependencies:
   '@emotion/react': 11.10.6_o2wclmlv6kymw75psj4clbbe6a
   '@mantine/core': 6.0.5_4wdcoykwfvqpokclgebq7lzcca
   '@mantine/hooks': 6.0.5_react@18.2.0
-  '@resonance-box/react-recital': 0.0.14
-  '@resonance-box/recital-core': 0.0.14
+  '@resonance-box/react-recital': 0.0.15
+  '@resonance-box/recital-core': 0.0.15
   '@tabler/icons-react': 2.13.1_react@18.2.0
   '@tanstack/react-query': 4.28.0_biqbaboplfbrettd7655fr4n2y
   '@tanstack/react-query-devtools': 4.28.0_q4teel2yjbizrm4naiaqcdpjum
@@ -694,21 +694,21 @@ packages:
     engines: {node: '>=14'}
     dev: false
 
-  /@resonance-box/react-recital/0.0.14:
-    resolution: {integrity: sha512-qnn7hUKySKcVUefOfKwZbPKFsRhFE/2PqeKxRZndH7SGhJ39bbyV4mr9JBwR2l6kPewwRn5MqRvP6ZcvI8nhlQ==}
+  /@resonance-box/react-recital/0.0.15:
+    resolution: {integrity: sha512-gK1tDiate6/YP5jCA8BjaDnwRtOsaUd1PVSBgH4rvfZzmfhf9hPqOcf3D/7guvRFd6pVdIF6VrSlhKIoN4C/jw==}
     engines: {node: 18.x, pnpm: '>=7.26.0'}
     dependencies:
-      '@resonance-box/recital-core': 0.0.14
+      '@resonance-box/recital-core': 0.0.15
       immer: 9.0.21
       lodash: 4.17.21
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
-      rooks: 7.10.1_biqbaboplfbrettd7655fr4n2y
-      zustand: 4.3.7_immer@9.0.21+react@18.2.0
+      rooks: 7.14.1_biqbaboplfbrettd7655fr4n2y
+      zustand: 4.3.8_immer@9.0.21+react@18.2.0
     dev: false
 
-  /@resonance-box/recital-core/0.0.14:
-    resolution: {integrity: sha512-V5VYxSCZV/bmULVMnOGaViW8+5K7HXTmgsTubl2JuUbIHzSTLTUmcFNtpO3p85alXrJXHgiGcSLypwJg3OktIA==}
+  /@resonance-box/recital-core/0.0.15:
+    resolution: {integrity: sha512-XauWGA0O4IN/U8mN7mIoNNMrMxtY/z2w0ywoVFon5TeBiRj6dDqwDxRtDFcE+dO9nR5ACtJo8WkKkKJYQAFMkw==}
     engines: {node: 18.x, pnpm: '>=7.26.0'}
     dependencies:
       '@paralleldrive/cuid2': 2.2.0
@@ -2885,8 +2885,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /rooks/7.10.1_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-oKbW9UN7Acf/JhhEojL5sMoh+zLoNd7uCZK33lkgnWHw3NwzMhNMuuWEnEclkE9uIpj65Dbs2kenPck2aEfroA==}
+  /rooks/7.14.1_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-oPuLNGm3OaFm3WfZHzmDvJvRit8QrXGm9/Kn49Bz8lJUjkThSBtERWzuQ9wb5DveqrpUZvmNyBXjBE0KWVt13w==}
     engines: {node: '>=v10.24.1'}
     peerDependencies:
       react: ^16.8.0  || ^17.0.0 || ^18.0.0
@@ -3349,8 +3349,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /zustand/4.3.7_immer@9.0.21+react@18.2.0:
-    resolution: {integrity: sha512-dY8ERwB9Nd21ellgkBZFhudER8KVlelZm8388B5nDAXhO/+FZDhYMuRnqDgu5SYyRgz/iaf8RKnbUs/cHfOGlQ==}
+  /zustand/4.3.8_immer@9.0.21+react@18.2.0:
+    resolution: {integrity: sha512-4h28KCkHg5ii/wcFFJ5Fp+k1J3gJoasaIbppdgZFO4BPJnsNxL0mQXBSFgOgAdCdBj35aDTPvdAJReTMntFPGg==}
     engines: {node: '>=12.7.0'}
     peerDependencies:
       immer: '>=9.0'
