@@ -1,24 +1,59 @@
+import { motion } from "framer-motion";
+
 function App() {
   return (
     <div className="flex flex-col items-center min-h-screen font-inter">
       <header className="h-16"></header>
 
-      <main className="max-w-5xl flex-1 flex flex-col justify-center space-y-24">
+      <main className="max-w-5xl flex-1 flex flex-col justify-center space-y-16">
         <section className="flex flex-col items-center space-y-8">
-          <h1 className="text-8xl font-bold font-cal-sans text-center">
+          <motion.h1
+            className="text-8xl font-bold font-cal-sans text-center"
+            variants={{
+              hidden: { y: 20, opacity: 0 },
+              visible: { y: 0, opacity: 1 },
+            }}
+            transition={{ duration: 1 }}
+            initial="hidden"
+            animate="visible"
+          >
             Music Transformer
             <br />
             Playground
-          </h1>
-          <p className="text-2xl leading-10 text-center text-slate-500">
+          </motion.h1>
+          <motion.p
+            className="text-2xl leading-10 text-center text-slate-500"
+            variants={{
+              hidden: { y: 20, opacity: 0 },
+              visible: { y: 0, opacity: 1 },
+            }}
+            transition={{ duration: 1 }}
+            initial="hidden"
+            animate="visible"
+          >
             A playground to generate piano performances easily
             <br />
             using AI called Music Transformer
-          </p>
+          </motion.p>
         </section>
         <section className="flex flex-col items-center">
-          <button className="px-8 py-3 bg-black hover:bg-black/80 text-white rounded-lg">
-            Let's start
+          <button onClick={() => {}}>
+            <motion.div
+              className="px-8 py-3 bg-black hover:bg-black/80 text-white rounded-lg"
+              variants={{
+                hidden: { y: 20, opacity: 0, transition: { duration: 1 } },
+                visible: {
+                  y: 0,
+                  opacity: 1,
+                  transition: { duration: 1 },
+                },
+              }}
+              whileTap={{ scale: 0.925, transition: { duration: 0.005 } }}
+              initial="hidden"
+              animate="visible"
+            >
+              Let's start
+            </motion.div>
           </button>
         </section>
       </main>
