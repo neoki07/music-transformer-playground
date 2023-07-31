@@ -60,7 +60,7 @@ export function Player({
       <div className="shadow-lg shadow-black/40">
         <PianoRoll
           width={800}
-          height={640}
+          height={480}
           minNoteNumber={minNoteNumber}
           maxNoteNumber={maxNoteNumber}
         />
