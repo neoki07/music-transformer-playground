@@ -9,9 +9,9 @@ interface LayoutProps {
 export function Layout({ children, showHeader }: LayoutProps) {
   return (
     <Providers>
-      <div className="h-screen overflow-hidden">
+      <div className="h-screen min-h-[50rem] min-w-[56rem] flex flex-col">
         {showHeader && (
-          <header className="fixed top-0 flex justify-center items-center w-full p-8">
+          <header className="flex justify-center items-start w-full h-36 pt-8">
             <h1 className="text-5xl font-cal-sans text-center">
               Music Transformer
               <br />
@@ -20,9 +20,9 @@ export function Layout({ children, showHeader }: LayoutProps) {
           </header>
         )}
 
-        <main>{children}</main>
+        <main className="flex-1">{children}</main>
 
-        <footer className="fixed bottom-0 flex justify-center items-center w-full p-8">
+        <footer className="flex justify-center items-end w-full h-36 pb-8">
           <span>
             Built by{" "}
             <a

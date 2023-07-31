@@ -13,12 +13,11 @@ function AppInner({ onStart }: AppInnerProps) {
 
   const handleStart = useCallback(() => {
     setAudioContext(new AudioContext());
-    console.log("onStart1");
     onStart?.();
   }, [setAudioContext, onStart]);
 
   return (
-    <div className="h-screen overflow-hidden flex justify-center items-center">
+    <div className="h-full flex justify-center items-center">
       {audioContext === undefined && <Landing onStart={handleStart} />}
       {audioContext !== undefined && (
         <Playground
@@ -32,10 +31,8 @@ function AppInner({ onStart }: AppInnerProps) {
 
 export function App() {
   const [showHeader, setShowHeader] = useState(false);
-  console.log("showHeader:", showHeader);
 
   const handleStart = useCallback(() => {
-    console.log("onStart2");
     setShowHeader(true);
   }, [setShowHeader]);
 
