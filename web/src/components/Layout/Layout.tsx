@@ -3,17 +3,26 @@ import { Providers } from "./Providers";
 
 interface LayoutProps {
   children: ReactNode;
+  showHeader?: boolean;
 }
 
-export function Layout({ children }: LayoutProps) {
+export function Layout({ children, showHeader }: LayoutProps) {
   return (
     <Providers>
-      <div className="flex flex-col items-center min-h-screen font-inter">
-        <header className="h-16" />
+      <div className="h-screen overflow-hidden">
+        {showHeader && (
+          <header className="fixed top-0 flex justify-center items-center w-full p-8">
+            <h1 className="text-5xl font-cal-sans text-center">
+              Music Transformer
+              <br />
+              Playground
+            </h1>
+          </header>
+        )}
 
-        <main className="flex-1 flex flex-col">{children}</main>
+        <main>{children}</main>
 
-        <footer className="h-16 flex justify-center items-center border-t w-full text-slate-700 text-sm">
+        <footer className="fixed bottom-0 flex justify-center items-center w-full p-8">
           <span>
             Built by{" "}
             <a

@@ -1,17 +1,24 @@
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import { Landing } from "./Landing";
 import { useAudioContext } from "./providers/AudioContextProvider";
 import { Playground } from "./features/playground";
+import { Layout } from "./components/Layout";
 
-export function App() {
+interface AppInnerProps {
+  onStart?: () => void;
+}
+
+function AppInner({ onStart }: AppInnerProps) {
   const [audioContext, setAudioContext] = useAudioContext();
 
   const handleStart = useCallback(() => {
     setAudioContext(new AudioContext());
-  }, [setAudioContext]);
+    console.log("onStart1");
+    onStart?.();
+  }, [setAudioContext, onStart]);
 
   return (
-    <div className="flex-1 flex justify-center items-center">
+    <div className="h-screen overflow-hidden flex justify-center items-center">
       {audioContext === undefined && <Landing onStart={handleStart} />}
       {audioContext !== undefined && (
         <Playground
@@ -20,5 +27,21 @@ export function App() {
         />
       )}
     </div>
+  );
+}
+
+export function App() {
+  const [showHeader, setShowHeader] = useState(false);
+  console.log("showHeader:", showHeader);
+
+  const handleStart = useCallback(() => {
+    console.log("onStart2");
+    setShowHeader(true);
+  }, [setShowHeader]);
+
+  return (
+    <Layout showHeader={showHeader}>
+      <AppInner onStart={handleStart} />
+    </Layout>
   );
 }

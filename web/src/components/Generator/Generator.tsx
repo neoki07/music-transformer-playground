@@ -53,7 +53,7 @@ export function Generator({ apiUrl }: GeneratorProps) {
         <Loading label="Generating..." />
       ) : (
         <Player
-          generating={isFetching}
+          regenerate={regenerate}
           minNoteNumber={minNoteNumber}
           maxNoteNumber={maxNoteNumber}
         />
