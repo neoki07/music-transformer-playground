@@ -9,7 +9,7 @@ interface LayoutProps {
 export function Layout({ children, showHeader }: LayoutProps) {
   return (
     <Providers>
-      <div className="h-screen min-h-[50rem] min-w-[56rem] flex flex-col">
+      <div className="h-screen min-h-[52rem] min-w-[56rem] flex flex-col">
         <header className="flex justify-center items-start w-full h-36 pt-8">
           {showHeader && (
             <h1 className="text-5xl font-cal-sans text-center">

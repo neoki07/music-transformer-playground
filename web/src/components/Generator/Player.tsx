@@ -22,7 +22,16 @@ export function Player({
   }, [stop, regenerate]);
 
   return (
-    <div className="space-y-6 -mb-20">
+    <div className="space-y-6">
+      <div className="h-8" />
+      <div className="shadow-lg shadow-black/40">
+        <PianoRoll
+          width={800}
+          height={480}
+          minNoteNumber={minNoteNumber}
+          maxNoteNumber={maxNoteNumber}
+        />
+      </div>
       <div className="flex items-center justify-center">
         <div className="space-x-6">
           <button onClick={play}>
@@ -56,14 +65,6 @@ export function Player({
             </motion.div>
           </button>
         </div>
-      </div>
-      <div className="shadow-lg shadow-black/40">
-        <PianoRoll
-          width={800}
-          height={480}
-          minNoteNumber={minNoteNumber}
-          maxNoteNumber={maxNoteNumber}
-        />
       </div>
     </div>
   );
