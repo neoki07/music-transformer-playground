@@ -18,11 +18,6 @@ function linearScaleVelocities(track: Track, min: number, max: number) {
       (note.velocity.value - minVelocity) / (maxVelocity - minVelocity);
     const remappedVelocity = min + normalizedVelocity * (max - min);
 
-    console.log({
-      velocity: note.velocity.value,
-      scaledVelocity: Math.round(remappedVelocity),
-    });
-
     track.updateNote(note.id, {
       velocity: new Velocity(Math.round(remappedVelocity)),
     });
