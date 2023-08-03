@@ -39,7 +39,7 @@ export async function getGeneratedSong(apiUrl: string): Promise<Song> {
     });
   });
 
-  linearScaleVelocities(track, 80, 127);
+  linearScaleVelocities(track, 64, 127);
 
   return song;
 }
