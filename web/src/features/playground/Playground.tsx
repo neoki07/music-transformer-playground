@@ -26,5 +26,5 @@ export function Playground({ apiUrl, audioContext }: PlaygroundProps) {
     return <Loading label="Setup instrument..." />;
   }
 
-  return <Generator apiUrl={apiUrl} />;
+  return <Generator apiUrl={apiUrl} synth={synth} />;
 }
