@@ -1,5 +1,5 @@
 import { Piano, KeyboardShortcuts, MidiNumbers } from "react-piano";
-import "react-piano/dist/styles.css";
+import "./styles/react-piano.css";
 
 interface KeyboardProps {
   playNote: (noteNumber: number) => void;
