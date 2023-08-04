@@ -1,25 +1,51 @@
 import { PianoRoll, useRecital } from "@resonance-box/react-recital";
 import { motion } from "framer-motion";
 import { PlayIcon, StopIcon, ArrowPathIcon } from "@heroicons/react/24/solid";
-import { useCallback } from "react";
+import { useCallback, useEffect, useMemo } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { getGeneratedSong } from "./getGeneratedSong";
+import { getMinMaxNoteNumber } from "./getMinMaxNotNumber";
 
 interface PlayerProps {
-  regenerate: () => void;
-  minNoteNumber: number;
-  maxNoteNumber: number;
+  apiUrl: string;
 }
 
-export function Player({
-  regenerate,
-  minNoteNumber,
-  maxNoteNumber,
-}: PlayerProps) {
-  const { play, stop } = useRecital();
+export function Player({ apiUrl }: PlayerProps) {
+  const { play, stop, setSong } = useRecital();
+  const {
+    data: song,
+    remove,
+    refetch,
+  } = useQuery({
+    queryKey: ["generatedSong"],
+    queryFn: async () => await getGeneratedSong(apiUrl),
+  });
 
-  const stopAndRegenerate = useCallback(() => {
+  const { minNoteNumber, maxNoteNumber } = useMemo(() => {
+    if (song === undefined) {
+      return { minNoteNumber: 0, maxNoteNumber: 127 };
+    }
+
+    const { minNoteNumber, maxNoteNumber } = getMinMaxNoteNumber(song);
+    return {
+      minNoteNumber: Math.max(0, minNoteNumber - 3),
+      maxNoteNumber: Math.min(127, maxNoteNumber + 3),
+    };
+  }, [song]);
+
+  const regenerate = useCallback(() => {
     stop();
-    regenerate();
-  }, [stop, regenerate]);
+    remove();
+    refetch().catch((e) => {
+      throw new Error(e.message);
+    });
+  }, [stop, remove, refetch]);
+
+  useEffect(() => {
+    if (song !== undefined) {
+      setSong(song);
+    }
+  }, [song, setSong]);
 
   return (
     <div className="space-y-6">
@@ -54,7 +80,7 @@ export function Player({
               <StopIcon width={28} />
             </motion.div>
           </button>
-          <button onClick={stopAndRegenerate}>
+          <button onClick={regenerate}>
             <motion.div
               className="p-3 border border-slate-200 rounded-full text-slate-400 bg-white shadow-lg shadow-black/20"
               tabIndex={-1}
