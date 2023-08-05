@@ -9,11 +9,11 @@ dependencies:
     specifier: ^2.0.18
     version: 2.0.18(react@18.2.0)
   '@resonance-box/react-recital':
-    specifier: ^0.0.15
-    version: 0.0.15
+    specifier: ^0.0.16
+    version: 0.0.16(@types/react@18.2.15)
   '@resonance-box/recital-core':
-    specifier: ^0.0.15
-    version: 0.0.15
+    specifier: ^0.0.16
+    version: 0.0.16
   '@tanstack/react-query':
     specifier: ^4.32.0
     version: 4.32.0(react-dom@18.2.0)(react@18.2.0)
@@ -438,21 +438,23 @@ packages:
       '@noble/hashes': 1.3.1
     dev: false
 
-  /@resonance-box/react-recital@0.0.15:
-    resolution: {integrity: sha512-gK1tDiate6/YP5jCA8BjaDnwRtOsaUd1PVSBgH4rvfZzmfhf9hPqOcf3D/7guvRFd6pVdIF6VrSlhKIoN4C/jw==}
+  /@resonance-box/react-recital@0.0.16(@types/react@18.2.15):
+    resolution: {integrity: sha512-r6WTtXrou01DZi/hjELGnkrRPDj2IB9TKnugulU+40TPlVI9Wag8+0XeRiAXshZt6dKPSHeQyS/vdN0EUHGc2g==}
     engines: {node: 18.x, pnpm: '>=7.26.0'}
     dependencies:
-      '@resonance-box/recital-core': 0.0.15
+      '@resonance-box/recital-core': 0.0.16
       immer: 9.0.21
       lodash: 4.17.21
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       rooks: 7.14.1(react-dom@18.2.0)(react@18.2.0)
-      zustand: 4.3.9(immer@9.0.21)(react@18.2.0)
+      zustand: 4.4.0(@types/react@18.2.15)(immer@9.0.21)(react@18.2.0)
+    transitivePeerDependencies:
+      - '@types/react'
     dev: false
 
-  /@resonance-box/recital-core@0.0.15:
-    resolution: {integrity: sha512-XauWGA0O4IN/U8mN7mIoNNMrMxtY/z2w0ywoVFon5TeBiRj6dDqwDxRtDFcE+dO9nR5ACtJo8WkKkKJYQAFMkw==}
+  /@resonance-box/recital-core@0.0.16:
+    resolution: {integrity: sha512-6nkFm6DH/9iA1S2PGkaWNW06sx6k6y2RCXQH6GgdUg9pDd0k2Bokqrf/nhiHq21bVP1w3H2CUQvvazaEw/zXyg==}
     engines: {node: 18.x, pnpm: '>=7.26.0'}
     dependencies:
       '@paralleldrive/cuid2': 2.2.1
@@ -631,7 +633,6 @@ packages:
 
   /@types/prop-types@15.7.5:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
-    dev: true
 
   /@types/react-dom@18.2.7:
     resolution: {integrity: sha512-GRaAEriuT4zp9N4p1i8BDBYmEyfo+xQ3yHjJU4eiK5NDa1RmUZG+unZABUTK4/Ox/M+GaHwb6Ow8rUITrtjszA==}
@@ -645,11 +646,9 @@ packages:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.3
       csstype: 3.1.2
-    dev: true
 
   /@types/scheduler@0.16.3:
     resolution: {integrity: sha512-5cJ8CB4yAx7BH1oMvdU0Jh9lrEXyPkar6F9G/ERswkCuvP4KQZfZkSjcMbAICCpQTN4OuZn8tz0HiKv9TGZgrQ==}
-    dev: true
 
   /@types/semver@7.5.0:
     resolution: {integrity: sha512-G8hZ6XJiHnuhQKR7ZmysCeJWE08o8T0AXtk5darsCaTVsYZhhgUrq53jizaR2FvsoeCwJhlmwTjkXBY5Pn/ZHw==}
@@ -999,7 +998,6 @@ packages:
 
   /csstype@3.1.2:
     resolution: {integrity: sha512-I7K1Uu0MBPzaFKg4nI5Q7Vs2t+3gWWW648spaF+Rg7pI9ds18Ugn+lvg4SHczUdKlHI5LWBXyqfS8+DufyBsgQ==}
-    dev: true
 
   /debug@4.3.4:
     resolution: {integrity: sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==}
@@ -2179,18 +2177,22 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /zustand@4.3.9(immer@9.0.21)(react@18.2.0):
-    resolution: {integrity: sha512-Tat5r8jOMG1Vcsj8uldMyqYKC5IZvQif8zetmLHs9WoZlntTHmIoNM8TpLRY31ExncuUvUOXehd0kvahkuHjDw==}
+  /zustand@4.4.0(@types/react@18.2.15)(immer@9.0.21)(react@18.2.0):
+    resolution: {integrity: sha512-2dq6wq4dSxbiPTamGar0NlIG/av0wpyWZJGeQYtUOLegIUvhM2Bf86ekPlmgpUtS5uR7HyetSiktYrGsdsyZgQ==}
     engines: {node: '>=12.7.0'}
     peerDependencies:
+      '@types/react': '>=16.8'
       immer: '>=9.0'
       react: '>=16.8'
     peerDependenciesMeta:
+      '@types/react':
+        optional: true
       immer:
         optional: true
       react:
         optional: true
     dependencies:
+      '@types/react': 18.2.15
       immer: 9.0.21
       react: 18.2.0
       use-sync-external-store: 1.2.0(react@18.2.0)
