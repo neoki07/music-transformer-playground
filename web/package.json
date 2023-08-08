@@ -11,8 +11,8 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.0.18",
-    "@resonance-box/react-recital": "^0.0.16",
-    "@resonance-box/recital-core": "^0.0.16",
+    "@resonance-box/react-recital": "^0.0.17",
+    "@resonance-box/recital-core": "^0.0.17",
     "@tanstack/react-query": "^4.32.0",
     "@tanstack/react-query-devtools": "^4.32.0",
     "framer-motion": "^10.15.0",
